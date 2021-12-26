@@ -19,7 +19,7 @@ module RobotsDilemma
       position = command_parts[1].split(',')
       robot.place(position[0].to_i, position[1].to_i, position[2])
     when "MOVE"
-
+      robot.move
     when "RIGHT"
 
     when "LEFT"
