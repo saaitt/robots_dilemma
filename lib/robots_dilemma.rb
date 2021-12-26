@@ -21,9 +21,9 @@ module RobotsDilemma
     when "MOVE"
       robot.move
     when "RIGHT"
-
+      robot.turn"RIGHT"
     when "LEFT"
-
+      robot.turn"LEFT"
     when "REPORT"
       robot.report
     when "exit"
