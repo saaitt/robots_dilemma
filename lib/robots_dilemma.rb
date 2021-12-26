@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+require "tty-prompt"
 
 require_relative "robots_dilemma/version"
 
