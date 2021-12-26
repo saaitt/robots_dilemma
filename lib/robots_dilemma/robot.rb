@@ -6,7 +6,7 @@ module RobotsDilemma
       @facing = "NORTH"
     end
 
-    def place(x,y,facing)
+    def place(x, y, facing)
       #TODO: add validation
       @position_x = x
       @position_y = y
@@ -25,6 +25,39 @@ module RobotsDilemma
         @position_x -= 1
       else
         puts 'invalid input'
+      end
+    end
+
+    def turn(direction)
+      case direction
+      when "RIGHT"
+        case @facing
+        when 'NORTH'
+          @facing = "EAST"
+        when 'SOUTH'
+          @facing = "WEST"
+        when 'EAST'
+          @facing = "SOUTH"
+        when 'WEST'
+          @facing = "NORTH"
+        else
+          puts "the facing attrebute has a problem. #{@facing}"
+        end
+      when "LEFT"
+        case @facing
+        when 'NORTH'
+          @facing = "WEST"
+        when 'SOUTH'
+          @facing = "EAST"
+        when 'EAST'
+          @facing = "NORTH"
+        when 'WEST'
+          @facing = "SOUTH"
+        else
+          puts "the facing attrebute has a problem. #{@facing}"
+        end
+      else
+        puts "the facing attrebute has a problem. #{@facing}"
       end
     end
 
