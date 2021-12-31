@@ -33,5 +33,10 @@ module RobotsDilemma
     def report(input)
       puts "#{@robot.report}"
     end
+
+    private def method_missing(symbol, *args)
+      puts "sorry i can't do that"
+    end
+
   end
 end
