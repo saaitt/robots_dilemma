@@ -7,7 +7,6 @@ module RobotsDilemma
     end
 
     def place(x, y, facing)
-      #TODO: add validation
       @position_x = x
       @position_y = y
       @facing = facing
@@ -15,7 +14,7 @@ module RobotsDilemma
 
     def move
       case @facing
-      when 'NORTH' #TODO: check edge cases
+      when 'NORTH'
         @position_y += 1
       when 'SOUTH'
         @position_y -= 1
