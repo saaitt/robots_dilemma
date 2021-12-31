@@ -41,7 +41,7 @@ module RobotsDilemma
         when 'WEST'
           @facing = "NORTH"
         else
-          puts "the facing attrebute has a problem. #{@facing}"
+          puts "the facing attribute has a problem. #{@facing}"
         end
       when "LEFT"
         case @facing
@@ -54,10 +54,10 @@ module RobotsDilemma
         when 'WEST'
           @facing = "SOUTH"
         else
-          puts "the facing attrebute has a problem. #{@facing}"
+          puts "the facing attribute has a problem. #{@facing}"
         end
       else
-        puts "the facing attrebute has a problem. #{@facing}"
+        puts "the facing attribute has a problem. #{@facing}"
       end
     end
 
