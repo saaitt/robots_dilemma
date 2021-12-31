@@ -63,7 +63,7 @@ module RobotsDilemma
     end
 
     def report
-      puts "#{@position_x},#{@position_y},#{@facing}"
+      "#{@position_x},#{@position_y},#{@facing}"
     end
   end
 end
