@@ -2,34 +2,25 @@ require "tty-prompt"
 
 require_relative "robots_dilemma/version"
 require_relative "robots_dilemma/robot"
+require_relative "robots_dilemma/board"
+require_relative "robots_dilemma/operator"
 
 module RobotsDilemma
   class Error < StandardError; end
 
   prompt = TTY::Prompt.new
-  robot = RobotsDilemma::Robot.new
+  operator = RobotsDilemma::Operator.new
 
-  running = true
-  while running
+  while true
     command = prompt.ask
-    #TODO encapsulate this part for testing and other forms of input
-    command_parts = command.split(" ")
-    case command_parts[0]
-    when "PLACE"
-      position = command_parts[1].split(',')
-      robot.place(position[0].to_i, position[1].to_i, position[2])
-    when "MOVE"
-      robot.move
-    when "RIGHT"
-      robot.turn"RIGHT"
-    when "LEFT"
-      robot.turn"LEFT"
-    when "REPORT"
-      robot.report
-    when "exit"
-      running = false
-    else
-      puts 'invalid command'
+    unless command.nil?
+      command_parts = command.split(" ")
+      begin
+        operator.send(command_parts[0].downcase,command_parts)
+      rescue
+        puts "an unexpected thing happened"
+      end
     end
   end
+
 end
