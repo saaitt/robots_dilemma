@@ -15,5 +15,13 @@ module RobotsDilemma
       end
     end
 
+    def move(input)
+      position = @robot.report
+      if @board.can_move(position.split(','))
+        @robot.move
+      end
+    end
+
+
   end
 end
