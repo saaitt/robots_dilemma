@@ -26,6 +26,9 @@ module RobotsDilemma
       @robot.turn "LEFT"
     end
 
+    def right(input)
+      @robot.turn "RIGHT"
+    end
 
   end
 end
