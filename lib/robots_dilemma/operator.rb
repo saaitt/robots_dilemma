@@ -30,5 +30,8 @@ module RobotsDilemma
       @robot.turn "RIGHT"
     end
 
+    def report(input)
+      puts "#{@robot.report}"
+    end
   end
 end
