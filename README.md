@@ -5,7 +5,8 @@
 
 
 ## Usage
-first install the ruby ``3.0.2`` and set env variables for board dimensions(if not set, the default value is 5) 
+first install the ruby ``3.0.2``, install dependent gems using ``bundle install`` and set env variables for board dimensions(if not set, the default value is 5) 
+
 ```bigquery
 export BOARD_HEIGHT=5
 export BOARD_WIDTH=5
