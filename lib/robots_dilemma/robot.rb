@@ -29,7 +29,8 @@ module RobotsDilemma
     end
 
     def turn(direction)
-      case direction
+      case direction #TODO use an array for N S E W and shifts for direction
+        #TODO OR i could use a mapped dictionary - also is faster than shift
       when "RIGHT"
         case @facing
         when 'NORTH'
