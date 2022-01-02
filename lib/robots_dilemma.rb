@@ -16,7 +16,11 @@ module RobotsDilemma
     unless command.nil?
       command_parts = command.split(" ")
       begin
-        operator.send(command_parts[0].downcase,command_parts)
+        if command_parts[1].nil?
+          operator.send(command_parts[0].downcase)
+        else
+          operator.send(command_parts[0].downcase,command_parts)
+        end
       rescue
         puts "an unexpected thing happened"
       end

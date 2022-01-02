@@ -15,22 +15,22 @@ module RobotsDilemma
       end
     end
 
-    def move(input)
+    def move
       position = @robot.report
       if @board.can_move(position.split(','))
         @robot.move
       end
     end
 
-    def left(input)
+    def left
       @robot.turn "LEFT"
     end
 
-    def right(input)
+    def right
       @robot.turn "RIGHT"
     end
 
-    def report(input)
+    def report
       puts "#{@robot.report}"
     end
 
