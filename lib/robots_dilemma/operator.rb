@@ -17,8 +17,10 @@ module RobotsDilemma
 
     def move
       position = @robot.report
-      if @board.can_move(position.split(','))
-        @robot.move
+      unless position.nil?
+        if @board.can_move(position.split(','))
+          @robot.move
+        end
       end
     end
 
@@ -31,7 +33,10 @@ module RobotsDilemma
     end
 
     def report
-      puts "#{@robot.report}"
+      robot_status = @robot.report
+      unless robot_status.nil?
+        puts "Output: #{robot_status}"
+      end
     end
 
     private def method_missing(symbol, *args)
