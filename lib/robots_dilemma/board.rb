@@ -10,8 +10,8 @@ module RobotsDilemma
       x = position[0].to_i
       y = position[1].to_i
       facing = position[2]
-      if x > 0 && x <= @width
-        if y > 0 && y <= @height
+      if x >= 0 && x <= @width
+        if y >= 0 && y <= @height
           if facing == "NORTH" || facing == "SOUTH" || facing == "EAST" || facing == "WEST"
             return true
           end
