@@ -35,45 +35,27 @@ class OperatorTest < Minitest::Test
   end
 
   def test_operator_doesnt_get_out_of_borders
+    board_width = ENV['BOARD_WIDTH'].nil? ? 5 : ENV['BOARD_WIDTH'].to_i
+    board_height = ENV['BOARD_HEIGHT'].nil? ? 5 : ENV['BOARD_HEIGHT'].to_i
     operator = ::RobotsDilemma::Operator.new
     operator.place(["place", "0,0,SOUTH"])
     operator.move
     operator.left
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
+    (0..board_width + 3).each do
+      operator.move
+    end
     operator.left
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
+    (0..board_height + 3).each do
+      operator.move
+    end
     operator.left
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
+    (0..board_width + 3).each do
+      operator.move
+    end
     operator.left
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
-    operator.move
+    (0..board_height + 3).each do
+      operator.move
+    end
     assert_equal "0,0,SOUTH", operator.report, "operator.report should show a string like '0,0,SOUTH' "
   end
 end
