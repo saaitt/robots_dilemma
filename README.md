@@ -1,5 +1,5 @@
 # RobotsDilemma
-
+A robot who need instructions to walk on some board :D
 
 ## Installation
 First you need to install ruby. Note that it's version should be higher than `` 2.4.0``
@@ -19,6 +19,16 @@ and then run the query bellow
 ```bigquery
 ruby lib/robots_dilemma.rb
 ```
+and in the command line just type your desired command like:
+```bigquery
+PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT
+```
+and our robot moves on the board.
 
 ## Testing
 ### Unit tests
