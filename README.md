@@ -31,6 +31,6 @@ ruby test/board_test.rb
 ### Integration
 
 ```bigquery
-ruby test/operator.rb
+ruby test/operator_test.rb
 ```
 
