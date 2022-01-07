@@ -33,10 +33,7 @@ module RobotsDilemma
     end
 
     def report
-      robot_status = @robot.report
-      unless robot_status.nil?
-        puts "Output: #{robot_status}"
-      end
+      @robot.report
     end
 
     private def method_missing(symbol, *args)
