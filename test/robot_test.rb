@@ -27,7 +27,7 @@ class RobotTest < Minitest::Test
   def test_robot_cant_move_unless_placed
     @robot = ::RobotsDilemma::Robot.new
     @robot.move
-    assert_equal nil, @robot.report, "robot.report should be nil "
+    assert_nil  @robot.report, "robot.report should be nil "
   end
 end
 
