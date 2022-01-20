@@ -17,7 +17,7 @@ module RobotsDilemma
       command_parts = command.split(" ")
       begin
         if command_parts[1].nil?
-          response = operator.send(command_parts[0].downcase)
+          response = operator.public_send(command_parts[0].downcase)
           unless response.nil?
             puts "output: #{response}"
           end
