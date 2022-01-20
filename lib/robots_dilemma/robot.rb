@@ -12,14 +12,6 @@ module RobotsDilemma
       @facing = facing
     end
 
-    def is_robot_placed
-      if @position_x == -1 || @position_y == -1
-        false
-      else
-        true
-      end
-    end
-
     def move
       if is_robot_placed
         case @facing
@@ -77,5 +69,16 @@ module RobotsDilemma
         "#{@position_x},#{@position_y},#{@facing}"
       end
     end
+
+    private
+    
+    def is_robot_placed
+      if @position_x == -1 || @position_y == -1
+        false
+      else
+        true
+      end
+    end
+
   end
 end
