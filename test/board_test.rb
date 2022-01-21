@@ -9,7 +9,7 @@ class BoardTest < Minitest::Test
     out_of_bounds_y = ENV['BOARD_HEIGHT'].nil? ? 6 : ENV['BOARD_HEIGHT'].to_i + 1
     facing = "SOUTH"
 
-    assert_equal false, board.check_positions([out_of_bounds_x, out_of_bounds_y, facing]), "board should return false "
+    assert_equal false, board.can_be_placed([out_of_bounds_x, out_of_bounds_y, facing]), "board should return false "
   end
 
   def test_board_doesnt_allow_y_outside
@@ -18,7 +18,7 @@ class BoardTest < Minitest::Test
     out_of_bounds_y = ENV['BOARD_HEIGHT'].nil? ? 6 : ENV['BOARD_HEIGHT'].to_i + 1
     facing = "SOUTH"
 
-    assert_equal false, board.check_positions([valid_x, out_of_bounds_y, facing]), "board should return false"
+    assert_equal false, board.can_be_placed([valid_x, out_of_bounds_y, facing]), "board should return false"
   end
 
   def test_board_doesnt_allow_x_outside
@@ -27,7 +27,7 @@ class BoardTest < Minitest::Test
     valid_y = ENV['BOARD_HEIGHT'].nil? ? 4 : ENV['BOARD_HEIGHT'].to_i - 1
     facing = "SOUTH"
 
-    assert_equal false, board.check_positions([out_of_bounds_x, valid_y, facing]), "board should return false"
+    assert_equal false, board.can_be_placed([out_of_bounds_x, valid_y, facing]), "board should return false"
   end
 
   def test_board_doesnt_allow_wrong_facing
@@ -36,7 +36,7 @@ class BoardTest < Minitest::Test
     valid_y = ENV['BOARD_HEIGHT'].nil? ? 4 : ENV['BOARD_HEIGHT'].to_i - 1
     invalid_facing = "soTb"
 
-    assert_equal false, board.check_positions([valid_x, valid_y, invalid_facing]), "board should return false"
+    assert_equal false, board.can_be_placed([valid_x, valid_y, invalid_facing]), "board should return false"
   end
 
   def test_board_allows_right_param
@@ -45,7 +45,7 @@ class BoardTest < Minitest::Test
     valid_y = ENV['BOARD_HEIGHT'].nil? ? 4 : ENV['BOARD_HEIGHT'].to_i - 1
     valid_facing = "WEST"
 
-    assert_equal true, board.check_positions([valid_x, valid_y, valid_facing]), "board should return true"
+    assert_equal true, board.can_be_placed([valid_x, valid_y, valid_facing]), "board should return true"
   end
 
   def test_board_doesnt_allow_moving_outside_north

@@ -11,7 +11,6 @@ module RobotsDilemma
 
   prompt = TTY::Prompt.new
   $operator = RobotsDilemma::Operator.new
-  $board = RobotsDilemma::Board.new
   input_manager = RobotsDilemma::InputManager.new
 
   while true
