@@ -6,28 +6,32 @@ module RobotsDilemma
       @facing = "NORTH"
     end
 
-    def place(x, y, facing)
-      @position_x = x
-      @position_y = y
-      @facing = facing
+    def place(input)
+      facing, x, y = map_input_to_positions(input)
+      if $board.can_be_placed([x, y, facing])
+        place_robot(facing, x, y)
+      end
     end
 
     def move
       if is_robot_placed
-        move_robot_forward
+        puts "i am placed"
+        if $board.can_move([@position_x, @position_y, @facing])
+          puts 'i can move'
+          move_robot_forward
+        end
       end
     end
 
-    def turn(direction)
+    def right
       if is_robot_placed
-        case direction
-        when "RIGHT"
-          turn_robot_right
-        when "LEFT"
-          turn_robot_left
-        else
-          puts "the facing attribute has a problem. #{@facing}"
-        end
+        turn_robot_right
+      end
+    end
+
+    def left
+      if is_robot_placed
+        turn_robot_left
       end
     end
 
@@ -38,6 +42,24 @@ module RobotsDilemma
     end
 
     private
+
+    def method_missing(symbol, *args)
+      puts "sorry i can't do that"
+    end
+
+    def map_input_to_positions(input)
+      positions_array = input[1].split(',')
+      x = positions_array[0].to_i
+      y = positions_array[1].to_i
+      facing = positions_array[2]
+      return facing, x, y
+    end
+
+    def place_robot(facing, x, y)
+      @position_x = x
+      @position_y = y
+      @facing = facing
+    end
 
     def move_robot_forward
       case @facing
