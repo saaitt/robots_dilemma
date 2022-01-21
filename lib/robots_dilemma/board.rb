@@ -19,27 +19,25 @@ module RobotsDilemma
     end
 
     def can_move(position)
-      x = position[0].to_i
-      y = position[1].to_i
-      facing = position[2]
+      facing, x, y = extract_x_y_facing_from_str_command(position)
       case facing
       when "NORTH"
-        if y < @height
+        if check_y_edge(y)
           return true
         end
         false
-      when "SOUTH"
+      when check_y_edge(y)
         if y > 0
           return true
         end
         false
       when "EAST"
-        if x < @width
+        if check_x_edge(x)
           return true
         end
         false
       when "WEST"
-        if x > 0
+        if check_x_edge(x)
           return true
         end
         false
