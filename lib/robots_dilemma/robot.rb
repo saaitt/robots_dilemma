@@ -8,17 +8,16 @@ module RobotsDilemma
 
     def place(input)
       facing, x, y = map_input_to_positions(input)
-      if $board.can_be_placed([x, y, facing])
+      if $board.is_valid_position([x, y, facing])
         place_robot(facing, x, y)
       end
     end
 
     def move
       if is_robot_placed
-        puts "i am placed"
-        if $board.can_move([@position_x, @position_y, @facing])
-          puts 'i can move'
-          move_robot_forward
+        next_x, next_y = calculate_robot_next_coordinate
+        if $board.is_valid_position([next_x, next_y, @facing])
+          place_robot(@facing, next_x, next_y)
         end
       end
     end
@@ -61,19 +60,22 @@ module RobotsDilemma
       @facing = facing
     end
 
-    def move_robot_forward
+    def calculate_robot_next_coordinate
+      x = @position_x
+      y = @position_y
       case @facing
       when 'NORTH'
-        @position_y += 1
+        y += 1
       when 'SOUTH'
-        @position_y -= 1
+        y -= 1
       when 'EAST'
-        @position_x += 1
+        x += 1
       when 'WEST'
-        @position_x -= 1
+        x -= 1
       else
         puts 'invalid input'
       end
+      return x, y
     end
 
     def turn_robot_right
