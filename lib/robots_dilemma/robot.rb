@@ -40,7 +40,11 @@ module RobotsDilemma
 
     def report
       if is_robot_placed
-        "#{@position_x},#{@position_y},#{@facing}"
+        {
+          x: @position_x,
+          y: @position_y,
+          facing: @facing
+        }
       end
     end
 
