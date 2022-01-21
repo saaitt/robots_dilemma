@@ -4,13 +4,11 @@ module RobotsDilemma
       command_parts = command_string.split(" ")
       # begin
         if command_parts[1].nil?
-          response = $robot.public_send(command_parts[0].downcase)
-          unless response.nil?
-            puts "output: #{response}"
-          end
+          result = $robot.public_send(command_parts[0].downcase)
         else
-          $robot.public_send(command_parts[0].downcase,command_parts)
+          result = $robot.public_send(command_parts[0].downcase,command_parts)
         end
+      result
       # rescue
       #   puts "an unexpected thing happened"
       # end
