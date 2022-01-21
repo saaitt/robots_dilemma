@@ -14,18 +14,7 @@ module RobotsDilemma
 
     def move
       if is_robot_placed
-        case @facing
-        when 'NORTH'
-          @position_y += 1
-        when 'SOUTH'
-          @position_y -= 1
-        when 'EAST'
-          @position_x += 1
-        when 'WEST'
-          @position_x -= 1
-        else
-          puts 'invalid input'
-        end
+        move_robot_forward
       end
     end
 
@@ -33,31 +22,9 @@ module RobotsDilemma
       if is_robot_placed
         case direction
         when "RIGHT"
-          case @facing
-          when 'NORTH'
-            @facing = "EAST"
-          when 'SOUTH'
-            @facing = "WEST"
-          when 'EAST'
-            @facing = "SOUTH"
-          when 'WEST'
-            @facing = "NORTH"
-          else
-            puts "the facing attribute has a problem. #{@facing}"
-          end
+          turn_robot_right
         when "LEFT"
-          case @facing
-          when 'NORTH'
-            @facing = "WEST"
-          when 'SOUTH'
-            @facing = "EAST"
-          when 'EAST'
-            @facing = "NORTH"
-          when 'WEST'
-            @facing = "SOUTH"
-          else
-            puts "the facing attribute has a problem. #{@facing}"
-          end
+          turn_robot_left
         else
           puts "the facing attribute has a problem. #{@facing}"
         end
@@ -71,7 +38,52 @@ module RobotsDilemma
     end
 
     private
-    
+
+    def move_robot_forward
+      case @facing
+      when 'NORTH'
+        @position_y += 1
+      when 'SOUTH'
+        @position_y -= 1
+      when 'EAST'
+        @position_x += 1
+      when 'WEST'
+        @position_x -= 1
+      else
+        puts 'invalid input'
+      end
+    end
+
+    def turn_robot_right
+      case @facing
+      when 'NORTH'
+        @facing = "EAST"
+      when 'SOUTH'
+        @facing = "WEST"
+      when 'EAST'
+        @facing = "SOUTH"
+      when 'WEST'
+        @facing = "NORTH"
+      else
+        puts "the facing attribute has a problem. #{@facing}"
+      end
+    end
+
+    def turn_robot_left
+      case @facing
+      when 'NORTH'
+        @facing = "WEST"
+      when 'SOUTH'
+        @facing = "EAST"
+      when 'EAST'
+        @facing = "NORTH"
+      when 'WEST'
+        @facing = "SOUTH"
+      else
+        puts "the facing attribute has a problem. #{@facing}"
+      end
+    end
+
     def is_robot_placed
       if @position_x == -1 || @position_y == -1
         false
