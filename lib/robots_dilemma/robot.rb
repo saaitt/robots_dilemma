@@ -11,6 +11,7 @@ module RobotsDilemma
       if $board.is_valid_position([x, y, facing])
         place_robot(facing, x, y)
       end
+      nil
     end
 
     def move
@@ -20,18 +21,21 @@ module RobotsDilemma
           place_robot(@facing, next_x, next_y)
         end
       end
+      nil
     end
 
     def right
       if is_robot_placed
         turn_robot_right
       end
+      nil
     end
 
     def left
       if is_robot_placed
         turn_robot_left
       end
+      nil
     end
 
     def report
