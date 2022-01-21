@@ -7,21 +7,15 @@ module RobotsDilemma
     end
 
     def is_valid_position(position)
-      facing, x, y = extract_x_y_facing_from_str_command(position)
+      x, y = extract_x_y_from_str_command(position)
       if check_x_edge(x)
         if check_y_edge(y)
-          if is_facing_valid(facing)
             return true
-          end
         end
       end
     end
 
     private
-
-    def is_facing_valid(facing)
-      facing == "NORTH" || facing == "SOUTH" || facing == "EAST" || facing == "WEST"
-    end
 
     def check_y_edge(y)
       y >= 0 && y < @height
@@ -31,11 +25,10 @@ module RobotsDilemma
       x >= 0 && x < @width
     end
 
-    def extract_x_y_facing_from_str_command(position)
+    def extract_x_y_from_str_command(position)
       x = position[0].to_i
       y = position[1].to_i
-      facing = position[2]
-      return facing, x, y
+      return x, y
     end
 
   end

@@ -9,7 +9,9 @@ module RobotsDilemma
     def place(input)
       facing, x, y = map_input_to_positions(input)
       if $board.is_valid_position([x, y, facing])
-        place_robot(facing, x, y)
+        if is_facing_valid(facing)
+          place_robot(facing, x, y)
+        end
       end
       nil
     end
@@ -123,6 +125,11 @@ module RobotsDilemma
         true
       end
     end
+
+    def is_facing_valid(facing)
+      facing == "NORTH" || facing == "SOUTH" || facing == "EAST" || facing == "WEST"
+    end
+
 
   end
 end
