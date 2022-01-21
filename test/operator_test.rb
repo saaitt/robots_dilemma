@@ -3,7 +3,6 @@ require 'minitest/autorun'
 
 require_relative "../lib/robots_dilemma/robot"
 require_relative "../lib/robots_dilemma/board"
-require_relative "../lib/robots_dilemma/operator"
 
 class OperatorTest < Minitest::Test
   def test_operator_places_correctly
