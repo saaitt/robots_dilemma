@@ -17,7 +17,7 @@ module RobotsDilemma
     end
 
     def move
-      if is_robot_placed
+      if robot_placed?
         next_x, next_y = calculate_robot_next_coordinate
         if $board.is_valid_position([next_x, next_y, @facing])
           place_robot(@facing, next_x, next_y)
@@ -27,21 +27,21 @@ module RobotsDilemma
     end
 
     def right
-      if is_robot_placed
+      if robot_placed?
         turn_robot_right
       end
       nil
     end
 
     def left
-      if is_robot_placed
+      if robot_placed?
         turn_robot_left
       end
       nil
     end
 
     def report
-      if is_robot_placed
+      if robot_placed?
         {
           x: @position_x,
           y: @position_y,
@@ -118,7 +118,7 @@ module RobotsDilemma
       end
     end
 
-    def is_robot_placed
+    def robot_placed?
       if @position_x == -1 || @position_y == -1
         false
       else
