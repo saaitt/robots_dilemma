@@ -7,15 +7,20 @@ module RobotsDilemma
     end
 
     def is_valid_position(position)
+      begin
       x, y = extract_x_y_from_str_command(position)
       if check_x_edge(x)
         if check_y_edge(y)
           return true
         else
-          raise "Board Validation: y parameter out of bounds"
+          raise " y parameter out of bounds"
         end
       else
-        raise "Board Validation: x parameter out of bounds"
+        raise " x parameter out of bounds"
+      end
+      rescue Exception => e
+        puts "Error in Board class: validation: #{e}"
+        false
       end
     end
 
