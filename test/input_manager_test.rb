@@ -10,7 +10,8 @@ class InputManagerTest < Minitest::Test
     $robot = RobotsDilemma::Robot.new
     $board = RobotsDilemma::Board.new
     input_manager.process("PLACE 0,0,NORTH")
-    assert_equal "0,0,NORTH", $robot.report, "robots report should show a string like '0,0,NORTH' "
+    expected_result = {:x=>0, :y=>0, :facing=>"NORTH"}
+    assert_equal expected_result, $robot.report, "robots report should show a string like {:x=>0, :y=>0, :facing=>'NORTH'}"
   end
 
   def test_move_command_success
@@ -20,7 +21,8 @@ class InputManagerTest < Minitest::Test
     input_manager.process("PLACE 0,0,NORTH")
     input_manager.process("MOVE")
     input_manager.process("MOVE")
-    assert_equal "0,2,NORTH", $robot.report, "robots report should show a string like '0,2,NORTH' "
+    expected_result = {:x=>0, :y=>2, :facing=>"NORTH"}
+    assert_equal expected_result, $robot.report, "robots report should return a hash like {:x=>0, :y=>2, :facing=>'NORTH'}"
   end
 
   def test_turn_right_success
@@ -30,7 +32,9 @@ class InputManagerTest < Minitest::Test
     input_manager.process("PLACE 0,0,NORTH")
     input_manager.process("RIGHT")
 
-    assert_equal "0,0,EAST", $robot.report, "robots report should show a string like '0,0,EAST' "
+    expected_result = {:x=>0, :y=>0, :facing=>"EAST"}
+    assert_equal expected_result, $robot.report, "robots report should return a hash like {:x=>0, :y=>0, :facing=>'EAST'}"
+
   end
 
   def test_turn_left_success
@@ -39,7 +43,8 @@ class InputManagerTest < Minitest::Test
     $board = RobotsDilemma::Board.new
     input_manager.process("PLACE 0,0,NORTH")
     input_manager.process("LEFT")
-    assert_equal "0,0,WEST", $robot.report, "robots report should show a string like '0,0,WEST' "
+    expected_result = {:x=>0, :y=>0, :facing=>"WEST"}
+    assert_equal expected_result, $robot.report, "robots report should return a hash like {:x=>0, :y=>0, :facing=>'WEST'}"
   end
 
   def test_edge_case
@@ -68,7 +73,9 @@ class InputManagerTest < Minitest::Test
     end
     input_manager.process("REPORT")
 
-    assert_equal "0,0,SOUTH", $robot.report, "robots report should show a string like '0,0,SOUTH' "
+    expected_result = {:x=>0, :y=>0, :facing=>"SOUTH"}
+    assert_equal expected_result, $robot.report, "robots report should return a hash like {:x=>0, :y=>0, :facing=>'SOUTH'}"
+
   end
 end
 
