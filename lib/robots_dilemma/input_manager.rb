@@ -9,8 +9,8 @@ module RobotsDilemma
           result = $robot.public_send(command_parts[0].downcase,command_parts)
         end
       result
-      rescue
-        puts "an unexpected thing happened"
+      rescue Exception => e
+        puts "Input Manager Error: #{e}"
       end
     end
   end

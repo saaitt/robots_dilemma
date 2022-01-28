@@ -10,8 +10,12 @@ module RobotsDilemma
       x, y = extract_x_y_from_str_command(position)
       if check_x_edge(x)
         if check_y_edge(y)
-            return true
+          return true
+        else
+          raise "Board Validation: y parameter out of bounds"
         end
+      else
+        raise "Board Validation: x parameter out of bounds"
       end
     end
 

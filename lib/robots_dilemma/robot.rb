@@ -7,46 +7,76 @@ module RobotsDilemma
     end
 
     def place(input)
-      facing, x, y = map_input_to_positions(input)
-      if $board.is_valid_position([x, y, facing])
-        if is_facing_valid(facing)
-          place_robot(facing, x, y)
+      begin
+        facing, x, y = map_input_to_positions(input)
+        if $board.is_valid_position([x, y, facing])
+          if is_facing_valid(facing)
+            place_robot(facing, x, y)
+          else
+            raise "invalid facing parameter was passed."
+          end
         end
+        nil
+      rescue Exception => e
+        puts "Error on robot class, place func : #{e}"
       end
-      nil
     end
 
     def move
-      if robot_placed?
-        next_x, next_y = calculate_robot_next_coordinate
-        if $board.is_valid_position([next_x, next_y, @facing])
-          place_robot(@facing, next_x, next_y)
+      begin
+        if robot_placed?
+          next_x, next_y = calculate_robot_next_coordinate
+          if $board.is_valid_position([next_x, next_y, @facing])
+            place_robot(@facing, next_x, next_y)
+          end
+        else
+          raise "robot has not been placed."
         end
+        nil
+      rescue Exception => e
+        puts "Error on robot class, move func : #{e}"
       end
-      nil
     end
 
     def right
-      if robot_placed?
-        turn_robot_right
+      begin
+        if robot_placed?
+          turn_robot_right
+        else
+          raise "robot has not been placed."
+        end
+        nil
+      rescue Exception => e
+        puts "Error on robot class, right func : #{e}"
       end
-      nil
     end
 
     def left
-      if robot_placed?
-        turn_robot_left
+      begin
+        if robot_placed?
+          turn_robot_left
+        else
+          raise "robot has not been placed."
+        end
+        nil
+      rescue Exception => e
+        puts "Error on robot class, left func : #{e}"
       end
-      nil
     end
 
     def report
-      if robot_placed?
-        {
-          x: @position_x,
-          y: @position_y,
-          facing: @facing
-        }
+      begin
+        if robot_placed?
+          {
+            x: @position_x,
+            y: @position_y,
+            facing: @facing
+          }
+        else
+          raise "robot has not been placed."
+        end
+      rescue Exception => e
+        puts "Error on robot class, report func : #{e}"
       end
     end
 
@@ -99,7 +129,7 @@ module RobotsDilemma
       when 'WEST'
         @facing = "NORTH"
       else
-        puts "the facing attribute has a problem. #{@facing}"
+        raise "the facing attribute has a problem. #{@facing}"
       end
     end
 
@@ -114,7 +144,7 @@ module RobotsDilemma
       when 'WEST'
         @facing = "SOUTH"
       else
-        puts "the facing attribute has a problem. #{@facing}"
+        raise "the facing attribute has a problem. #{@facing}"
       end
     end
 
@@ -127,9 +157,12 @@ module RobotsDilemma
     end
 
     def is_facing_valid(facing)
-      facing == "NORTH" || facing == "SOUTH" || facing == "EAST" || facing == "WEST"
+      if facing == "NORTH" || facing == "SOUTH" || facing == "EAST" || facing == "WEST"
+        true
+      else
+        false
+      end
     end
-
 
   end
 end
