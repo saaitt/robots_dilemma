@@ -13,7 +13,7 @@ bundle install
 ### Docker
 Build the image using the following command:
 ```bash
- docker build -t robots_dilemma .
+ docker build . -t robots_dilemma
 ```
 And run it using 
 ```bash

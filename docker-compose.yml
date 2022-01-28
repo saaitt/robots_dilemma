@@ -1,0 +1,7 @@
+version: '2'
+services:
+  robots_dilemma:
+    build: .
+    volumes:
+      - .:/robots_dilemma
+
